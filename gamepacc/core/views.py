@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.template import loader
 # Create your views here.
-def hello(request):
-    return HttpResponse("Lembrar de derrubar e subir a aplicaçao")
+def index(request):
+
+    context = {"nome": "Raimundo"}
+    return render(request, template_name="index.html")
