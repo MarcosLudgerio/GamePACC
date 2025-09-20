@@ -1,0 +1,59 @@
+:root {
+  /* 🌈 Cores principais (logo) */
+  --red-rosado: #E45364;
+  --red-coral: #F25D56;
+  --turquoise: #6BB9AC;
+
+  /* ✨ Cores complementares */
+  --yellow-sun: #F2C94C;
+  --blue-deep: #1A3C57;
+  --green-lime: #B7E36D;
+
+  /* ⚪ Neutros */
+  --white: #FFFFFF;
+  --gray-light: #F4F4F4;
+  --gray-medium: #BDBDBD;
+  --gray-dark: #2C2C2C;
+}
+
+/* Exemplos de aplicação */
+body {
+  background-color: var(--gray-light);
+  color: var(--gray-dark);
+  font-family:  Inter, Arial, sans-serif;
+}
+
+header, footer {
+  background-color: var(--blue-deep);
+  color: var(--white);
+}
+
+h1, h2, h3 {
+  color: var(--red-coral);
+}
+
+button.primary {
+  background-color: var(--red-coral);
+  color: var(--white);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button.primary:hover {
+  background-color: var(--red-rosado);
+}
+
+button.secondary {
+  background-color: var(--turquoise);
+  color: var(--white);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button.secondary:hover {
+  background-color: var(--green-lime);
+}

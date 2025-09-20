@@ -1,0 +1,25 @@
+:root {
+  --main-color: #4F46E5;
+  --font-family-base: 'Inter','Arial', sans-serif;
+}
+
+/*
+| ----------------- | ------------------------------ | ---------------------------- |
+| **Primária**      | `#E45364` (Indigo 600)         | Botões, links, destaques     |
+| **Secundária**    | `#F25D56` (Teal 500)           | Ícones, menus, hover         |
+| **Fundo**         | `#6BB9AC` (cinza quase branco) | Background padrão            |
+| **Texto**         | `#6BB9AC` (cinza escuro)       | Textos principais            |
+| **Sucesso**       | `#F25D56` (verde médio)        | Pontuação, feedback positivo |
+| **Erro / Alerta** | `#E45364` (vermelho claro)     | Feedback de erro             |
+| **Neutral**       | `#E5E7EB` (cinza claro)        | Bordas, cards, separadores   |
+
+
+Fundo principal: #F4F4F4 (cinza claro) ou #FFFFFF (limpo).
+Header / Footer: #1A3C57 (azul profundo).
+Botões primários: #F25D56 (coral).
+Botões secundários / hovers: #E45364 (rosado).
+Destaques / alertas: #F2C94C (amarelo).
+Textos principais: #2C2C2C (cinza escuro).
+Textos secundários / ícones: #BDBDBD (cinza médio).
+Detalhes visuais (gráficos, badges): #6BB9AC (turquesa) + #B7E36D (verde lima).
+*/
