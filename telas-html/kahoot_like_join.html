@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Página de entrada - Kahoot (estilo)</title>
+  <meta name="description" content="Página de entrada simulada: insira o PIN do jogo e seu apelido para participar." />
+  <style>
+    :root {
+      --bg: #0f1724;
+       --blue-deep: #1A3C57;
+      /* dark navy */
+      --card: #0b1220;
+      --accent: #6b21a8;
+      /* purple-ish */
+      --accent-2: #a78bfa;
+      --muted: #93c5fd;
+      --glass: rgba(255, 255, 255, 0.04);
+      --success: #10b981;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      background: linear-gradient(180deg, var(--bg), #071026);
+      color: #e6eef8
+    }
+
+    .wrap {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px
+    }
+
+    .card {
+      width: 100%;
+      max-width: 980px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+      border-radius: 14px;
+      padding: 28px;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      box-shadow: 0 8px 30px rgba(2, 6, 23, 0.7)
+    }
+
+    .left {
+      flex: 1;
+      padding: 8px
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      font-size: 20px
+    }
+
+    h1 {
+      margin: 8px 0 0;
+      font-size: 26px
+    }
+
+    p.lead {
+      margin: 8px 0 0;
+      color: #bcd7ff
+    }
+
+    .right {
+      width: 380px;
+      background: var(--card);
+      padding: 20px;
+      border-radius: 12px
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 8px;
+      color: #cfe4ff
+    }
+
+    .input-row {
+      display: flex;
+      gap: 12px;
+      align-items: center
+    }
+
+    input[type="text"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      background: var(--glass);
+      color: inherit;
+      font-size: 15px;
+      outline: none
+    }
+
+    input:focus {
+      box-shadow: 0 6px 18px rgba(107, 33, 168, 0.18);
+      border-color: rgba(167, 139, 250, 0.6)
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 16px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: white;
+      border: none;
+      font-weight: 600;
+      cursor: pointer
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed
+    }
+
+    .muted {
+      font-size: 13px;
+      color: #9fbef8;
+      margin-top: 8px
+    }
+
+    .hint {
+      font-size: 13px;
+      color: #fca5a5;
+      margin-top: 8px
+    }
+
+    .pin-inputs {
+      display: flex;
+      gap: 8px
+    }
+
+    .pin-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px
+    }
+
+    .footer {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #9fbef8
+    }
+
+    /* responsive */
+    @media (max-width:880px) {
+      .card {
+        flex-direction: column;
+        padding: 18px
+      }
+
+      .right {
+        width: 100%
+      }
+    }
+
+    /* small animation */
+    .pulse {
+      animation: pulse 2.4s infinite
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1)
+      }
+
+      50% {
+        transform: scale(1.02)
+      }
+
+      100% {
+        transform: scale(1)
+      }
+    }
+
+    /* confetti canvas covers whole page when shown */
+    #confetti {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+  <main class="wrap" id="main">
+    <section class="card" aria-labelledby="titulo">
+      <div class="left">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">K!</div>
+          <div>
+            <h1 id="titulo">Entrar no jogo</h1>
+            <p class="lead">Insira o PIN do jogo fornecido pelo anfitrião e escolha um apelido para participar.</p>
+          </div>
+        </div>
+        <p class="muted">Dica: o PIN costuma ter 6 dígitos. Se não funcionar, verifique com o anfitrião.</p>
+      </div>
+
+      <aside class="right" aria-label="Formulário de entrada">
+        <form id="joinForm" novalidate>
+          <div>
+            <label for="pin">PIN do jogo</label>
+            <div class="input-row">
+              <input id="pin" name="pin" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="6"
+                placeholder="123456" aria-describedby="pinHelp" autocomplete="off" required />
+            </div>
+            <div id="pinHelp" class="muted">6 dígitos numéricos — apenas números.</div>
+          </div>
+
+          <div style="margin-top:14px">
+            <label for="nick">Apelido</label>
+            <input id="nick" name="nick" type="text" maxlength="24" placeholder="Seu apelido" autocomplete="nickname"
+              required />
+          </div>
+
+          <div style="margin-top:18px;display:flex;gap:12px;align-items:center">
+            <button id="joinBtn" class="btn" type="submit" aria-live="polite">Entrar no jogo</button>
+            <div id="status" class="muted" aria-hidden="true"></div>
+          </div>
+
+          <div id="error" class="hint" role="alert" aria-live="assertive" style="display:none"></div>
+
+          <div class="footer">Ao entrar, você aceita as regras do anfitrião.</div>
+        </form>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    // Acessibilidade: foco inicial
+    document.getElementById('pin').focus();
+
+    const pinInput = document.getElementById('pin');
+    const nickInput = document.getElementById('nick');
+    const form = document.getElementById('joinForm');
+    const errorBox = document.getElementById('error');
+    const status = document.getElementById('status');
+    const joinBtn = document.getElementById('joinBtn');
+
+    // helper: show error
+    function showError(msg) {
+      errorBox.style.display = 'block';
+      errorBox.textContent = msg;
+    }
+    function clearError() {
+      errorBox.style.display = 'none';
+      errorBox.textContent = '';
+    }
+
+    // validate PIN: only digits, length 6
+    function validPin(v) {
+      return /^\d{6}$/.test(v);
+    }
+
+    function sanitizePin(v) {
+      return v.replace(/\D/g, '').slice(0, 6);
+    }
+
+    // live sanitize while typing
+    pinInput.addEventListener('input', e => {
+      const clean = sanitizePin(e.target.value);
+      if (e.target.value !== clean) e.target.value = clean;
+      clearError();
+    });
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      clearError();
+      const pin = pinInput.value.trim();
+      const nick = nickInput.value.trim() || 'Jogador';
+
+      if (!validPin(pin)) {
+        showError('PIN inválido — insira 6 dígitos numéricos.');
+        pinInput.focus();
+        return;
+      }
+      if (nick.length < 1 || nick.length > 24) {
+        showError('Apelido inválido — use entre 1 e 24 caracteres.');
+        nickInput.focus();
+        return;
+      }
+
+      // Simula requisição ao servidor (sem backend) — mostra status
+      joinBtn.disabled = true;
+      status.textContent = 'Conectando...';
+
+      // Simulação: se PIN terminar em 0 => não encontrado; se terminar 9 => já começou; else sucesso
+      setTimeout(() => {
+        joinBtn.disabled = false;
+        if (pin.endsWith('0')) {
+          status.textContent = '';
+          showError('PIN não encontrado. Verifique com o anfitrião.');
+          return;
+        }
+        if (pin.endsWith('9')) {
+          status.textContent = '';
+          showError('O jogo já começou. Aguarde o próximo.');
+          return;
+        }
+        // sucesso
+        status.textContent = '';
+        clearError();
+        showJoined(nick, pin);
+      }, 900 + Math.random() * 800);
+    });
+
+    // função simples de confetti para celebrar
+    function showJoined(nick, pin) {
+      const main = document.getElementById('main');
+      const container = document.createElement('div');
+      container.style.position = 'fixed';
+      container.style.left = 0; container.style.top = 0; container.style.width = '100%'; container.style.height = '100%';
+      container.style.display = 'flex'; container.style.alignItems = 'center'; container.style.justifyContent = 'center';
+      container.style.pointerEvents = 'none';
+
+      const card = document.createElement('div');
+      card.style.background = 'linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02))';
+      card.style.padding = '28px'; card.style.borderRadius = '12px'; card.style.boxShadow = '0 10px 30px rgba(2,6,23,0.7)';
+      card.innerHTML = `<div style="text-align:center;color:var(--muted)"><h2 style=\"margin:0 0 8px;color:white\">Bem-vindo, ${escapeHtml(nick)}!</h2><p style=\"margin:0 0 12px\">Você entrou no jogo <strong>${escapeHtml(pin)}</strong></p><p style=\"margin:0 10px 0; font-size:14px; color:#cfe4ff\">Aguarde instruções do anfitrião.</p></div>`;
+      container.appendChild(card);
+      document.body.appendChild(container);
+      // confetti via canvas
+      runConfetti(120);
+      // remove após 5s
+      setTimeout(() => { container.remove(); }, 5000);
+    }
+
+    // escape para evitar XSS se usuário colar HTML
+    function escapeHtml(s) { return String(s).replace(/[&<>"'`]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;", "`": "&#x60;" }[c])); }
+
+    // ------- confetti (simples, pequeno) -------
+    function runConfetti(pieces) {
+      const canvas = document.getElementById('confetti');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let W = canvas.width = innerWidth;
+      let H = canvas.height = innerHeight;
+      const items = [];
+      for (let i = 0; i < pieces; i++) {
+        items.push({
+          x: Math.random() * W, y: Math.random() * -H, r: Math.random() * 8 + 4, d: Math.random() * 60 + 20,
+          vx: (Math.random() - 0.5) * 3, vy: Math.random() * 4 + 2, rot: Math.random() * 360, vr: (Math.random() - 0.5) * 8
+        });
+      }
+      let t = 0;
+      function frame() {
+        ctx.clearRect(0, 0, W, H);
+        for (const it of items) {
+          it.x += it.vx; it.y += it.vy; it.rot += it.vr;
+          ctx.save();
+          ctx.translate(it.x, it.y);
+          ctx.rotate(it.rot * Math.PI / 180);
+          // simple rectangle piece
+          ctx.fillStyle = randomColor(it.d);
+          ctx.fillRect(-it.r / 2, -it.r / 2, it.r, it.r * 0.6);
+          ctx.restore();
+        }
+        // remove items that fell below
+        if (items.every(i => i.y > H + 50)) return; // stop when all gone
+        t = requestAnimationFrame(frame);
+      }
+      frame();
+      // stop after 4s
+      setTimeout(() => { cancelAnimationFrame(t); ctx.clearRect(0, 0, W, H); }, 4000);
+
+      function randomColor(seed) {
+        const palette = ['#ff8a80', '#ffd180', '#8c9eff', '#80d8ff', '#b9f6ca', '#d1c4e9'];
+        return palette[Math.floor(Math.abs(seed) % palette.length)];
+      }
+    }
+
+    // small enhancement: submit with Enter when focus in nickname or pin
+    [pinInput, nickInput].forEach(el => el.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); joinBtn.click(); } }));
+
+    // prevent mobile keyboard weirdness: ensure numeric keyboard
+    pinInput.addEventListener('focus', () => { pinInput.setAttribute('inputmode', 'numeric'); });
+
+    // progressive enhancement: deep-linking example (e.g. ?pin=123456&nick=Bob)
+    (function prefill() {
+      const params = new URLSearchParams(location.search);
+      if (params.has('pin')) pinInput.value = sanitizePin(params.get('pin'));
+      if (params.has('nick')) nickInput.value = params.get('nick').slice(0, 24);
+    })();
+
+  </script>
+</body>
+
+</html>

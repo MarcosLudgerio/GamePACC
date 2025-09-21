@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HomePage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="max-h-100 min-h-screen">
+    <header class="w-full shadow-sm">
+        <div class="max-w-5xl mx-auto px-6 py-8 flex items-center gap-4">
+
+            <div class="flex items-center gap-4">
+                <div class="w-50 h-20 rounded-lg overflow-hidden shadow-md flex items-center justify-center">
+                    <img src="./img/logo.jpg" alt="Gamepacc logo" class="w-full h-full object-contain" />
+                </div>
+            </div>
+
+            <div>
+                <h1 class="text-3xl sm:text-3xl font-extrabold tracking-tight">Gamepacc</h1>
+                <p class="text-sm sm:text-base font-extrabold">Testes, desafios e aprendizado em um só jogo.</p>
+            </div>
+            <div class="ml-auto">
+
+                <button
+                    class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium border border-gray-200 bg-white text-gray-800 hover:shadow">
+                    Login
+                </button>
+            </div>
+        </div>
+    </header>
+    <main class="max-w-full flex flex-row flex-col items-center justify-center max-h-100 px-16 py-16">
+        <section class="card flex flex-row flex-col items-center justify-center">
+            <h1 id="tittle-main" class="text-5xl font-regular tracking-tight my-4">Entre na sala:</h1>
+            <input id="nick" name="nick" type="text" maxlength="24" placeholder="Seu apelido" autocomplete="nickname"
+                required />
+            <button id="primary" class="px-4 py-2 rounded-lg font-semibold text-white">Entrar</button>
+
+        </section>
+    </main>
+
+    <footer class="fixed bottom-0 w-full bg-gray-800 text-white text-center p-4 mt-12">
+        <div class="max-w-5xl mx-auto px-6 py-6">
+            Gamepacc © Testes, desafios e aprendizado.
+        </div>
+    </footer>
+</body>
+
+</html>

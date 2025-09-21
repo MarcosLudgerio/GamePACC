@@ -1,0 +1,120 @@
+:root {
+  /* 🌈 Cores principais (logo) */
+  --red-rosado: #E45364;
+  --red-coral: #F25D56;
+  --turquoise: #6BB9AC;
+
+  /* ✨ Cores complementares */
+  --yellow-sun: #F2C94C;
+  --blue-deep: #1A3C57;
+  --blue-dark: #0f1724;
+  --blue-light: #bcd7ff;
+  --green-lime: #B7E36D;
+  --blue-tech: #152446;
+  --purple: #401f79;
+
+  /* ⚪ Neutros */
+  --white: #FFFFFF;
+  --gray-light: #F4F4F4;
+  --white-ice: #e6eef8;
+  --gray-medium: #BDBDBD;
+  --gray-dark: #2C2C2C;
+}
+
+/* Exemplos de aplicação */
+body {
+  background-color: var(--blue-dark);
+  color: var(--gray-dark);
+  font-family: Inter, Arial, sans-serif;
+}
+
+footer {
+  background-color: var(--blue-deep);
+  color: var(--white);
+}
+
+header {
+  background: linear-gradient(165deg, var(--blue-tech), var(--purple));
+  color: white;
+  padding: 15px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+header + p{
+   color: var(--white-ice);
+   
+}
+
+h1,
+h2,
+h3 {
+  color: var(--white);
+}
+
+button.primary {
+  background-color: var(--red-coral);
+  color: var(--white);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button.primary:hover {
+  background-color: var(--red-rosado);
+}
+
+#tittle-main {
+  color: var(--white-ice);
+
+}
+
+.card {
+  width: 100%;
+  max-width: 980px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+  border-radius: 14px;
+  padding: 28px;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  box-shadow: 0 8px 30px rgba(2, 6, 23, 0.7)
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.452);
+  background: var(--glass);
+  color: var(--gray-light);
+  font-size: 15px;
+  outline: none
+}
+
+input:focus {
+  box-shadow: 0 6px 18px rgba(107, 33, 168, 0.18);
+  border-color: rgba(167, 139, 250, 0.6)
+}
+
+button#primary{
+  background-color: var(--red-coral);
+  width: 12em;
+}
+
+button#primary:active{
+  background-color: var(--red-rosado);
+  width: 12em;
+}
+
+button.secondary {
+  background-color: var(--turquoise);
+  color: var(--white);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button.secondary:hover {
+  background-color: var(--green-lime);
+}

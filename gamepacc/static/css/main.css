@@ -18,7 +18,7 @@
 
 /* Exemplos de aplicação */
 body {
-  background-color: var(--gray-light);
+  background-color:var(--blue-deep);
   color: var(--gray-dark);
   font-family:  Inter, Arial, sans-serif;
 }
@@ -26,6 +26,7 @@ body {
 header, footer {
   background-color: var(--blue-deep);
   color: var(--white);
+  border: 8px solid red;
 }
 
 h1, h2, h3 {
