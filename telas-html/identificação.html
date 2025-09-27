@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Identificação</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="max-h-100 min-h-screen">
+    
+    <main class="max-w-full flex flex-row flex-col items-center justify-center max-h-100 px-16 py-16">
+        <section class="card flex flex-row flex-col items-center justify-center">
+            <div class="form-group">
+                <h2 class="text-4xl font-regular tracking-tight ">Como gostaria de ser chamado?</h2>
+                <p style="text-align: center; color: #e7ecf5;">
+                    Escolha como quer ser chamado durante o desafio
+                </p>
+            </div>
+            <div class="form-group">
+                <label class="name-form__label text-1xl font-regular tracking-tight" for="player-name">Seu Nome</label>
+                <input type="text" id="player-name" placeholder="Ex: TestMaster123" maxlength="20">
+            </div>
+
+            <button class="primary btn btn-block" onclick="showScreen('lobby-screen')">
+                <i class="fas fa-play"></i> Entrar no Jogo
+            </button>
+
+            <button class="secondary btn btn-block" style="background: #6b7280; margin-top: 10px;"
+                onclick="showScreen('code-screen')">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </button>
+
+        </section>
+    </main>
+</body>
+
+</html>

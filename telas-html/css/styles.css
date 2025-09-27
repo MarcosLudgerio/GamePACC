@@ -96,14 +96,14 @@ input:focus {
   border-color: rgba(167, 139, 250, 0.6)
 }
 
-button#primary{
+button.primary{
   background-color: var(--red-coral);
-  width: 12em;
+  width: auto;
 }
 
-button#primary:active{
+button.primary:active{
   background-color: var(--red-rosado);
-  width: 12em;
+  width: auto;
 }
 
 button.secondary {
@@ -117,4 +117,10 @@ button.secondary {
 
 button.secondary:hover {
   background-color: var(--green-lime);
+}
+
+label.name-form__label {
+  font-size: 1.2rem;
+  color: var(--white-ice);
+  
 }
