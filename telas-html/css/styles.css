@@ -39,9 +39,10 @@ header {
   padding: 15px 0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-header + p{
-   color: var(--white-ice);
-   
+
+header+p {
+  color: var(--white-ice);
+
 }
 
 h1,
@@ -96,12 +97,12 @@ input:focus {
   border-color: rgba(167, 139, 250, 0.6)
 }
 
-button.primary{
+button.primary {
   background-color: var(--red-coral);
   width: auto;
 }
 
-button.primary:active{
+button.primary:active {
   background-color: var(--red-rosado);
   width: auto;
 }
@@ -115,6 +116,39 @@ button.secondary {
   cursor: pointer;
 }
 
+ul.player-list {
+  list-style: none;
+  margin: 25px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+
+ul.player-list li {
+  padding: 15px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  color: var(--white-ice);
+  align-items: center;
+  gap: 15px;
+}
+
+.player-list li:last-child {
+  border-bottom: none;
+}
+
+.player-list .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
 button.secondary:hover {
   background-color: var(--green-lime);
 }
@@ -122,5 +156,5 @@ button.secondary:hover {
 label.name-form__label {
   font-size: 1.2rem;
   color: var(--white-ice);
-  
+
 }
